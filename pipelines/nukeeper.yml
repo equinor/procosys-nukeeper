@@ -44,7 +44,7 @@ stages:
       displayName: NuKeeper
       inputs:
         gitHubConnection: 'procosys - github'
-        arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
+        arguments: '--age 7d --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
         targetFolder: src
 
 ### Preservation ###
@@ -59,7 +59,7 @@ stages:
       displayName: NuKeeper
       inputs:
         gitHubConnection: 'procosys - github'
-        arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
+        arguments: '--age 7d --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
 
 ### Queue Receiver Service ###
 - stage: QueueReceiverService
@@ -73,7 +73,7 @@ stages:
       displayName: NuKeeper
       inputs:
         gitHubConnection: 'procosys - github'
-        arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
+        arguments: '--age 7d --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
 
 ### Auth Access Trigger Function ###
 - stage: AuthAccessTriggerFunction
@@ -87,4 +87,4 @@ stages:
       displayName: NuKeeper
       inputs:
         gitHubConnection: 'procosys - github'
-        arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
+        arguments: '--age 7d --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
