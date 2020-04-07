@@ -3,6 +3,9 @@ trigger: none
 schedules:
 - cron: "23 8 * * 1-5"
   displayName: Workday morning NuGet PR
+  branches:
+    include:
+      - master
   always: true
 
 resources:
