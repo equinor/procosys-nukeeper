@@ -18,12 +18,11 @@ pool:
 stages:
 - stage: Library
   displayName: Library
-  jobs:
-   steps:
-   - checkout: Library
-   - task: nukeeper.nukeeper.nukeeper.NuKeeper@0
-     displayName: NuKeeper
-     inputs:
-       gitHubConnection: 'procosys - github'
-       arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
-       targetFolder: src
+  steps:
+  - checkout: Library
+  - task: nukeeper.nukeeper.nukeeper.NuKeeper@0
+    displayName: NuKeeper
+    inputs:
+      gitHubConnection: 'procosys - github'
+      arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
+      targetFolder: src
