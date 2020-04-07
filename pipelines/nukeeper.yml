@@ -23,18 +23,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- stage: Library
-  displayName: Library
-  jobs:
-  - job: Library
-    steps:
-    - checkout: Library
-    - task: nukeeper.nukeeper.nukeeper.NuKeeper@0
-      displayName: NuKeeper
-      inputs:
-        gitHubConnection: 'procosys - github'
-        arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
-        targetFolder: src
 - stage: Preservation
   displayName: Preservation
   jobs:
