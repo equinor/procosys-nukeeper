@@ -34,4 +34,4 @@ stages:
       inputs:
         gitHubConnection: 'procosys - github'
         arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
-        targetFolder: src
+        targetFolder: (Agent.BuildDirectory)\s\Preservation
