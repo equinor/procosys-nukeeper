@@ -18,11 +18,17 @@ resources:
     type: github
     name: equinor/procosys-preservation-api
     endpoint: procosys - github
+  - repository: QueueReceiverService # The name used to reference this repository in the checkout step
+    type: github
+    name: equinor/procosys-queue-reciver-service
+    endpoint: procosys - github
 
 pool:
   vmImage: 'ubuntu-latest'
 
 stages:
+
+### Library ###
 - stage: Library
   displayName: Library
   dependsOn: []
@@ -36,6 +42,8 @@ stages:
         gitHubConnection: 'procosys - github'
         arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
         targetFolder: src
+
+### Preservation ###
 - stage: Preservation
   displayName: Preservation
   dependsOn: []
@@ -43,6 +51,20 @@ stages:
   - job: Preservation
     steps:
     - checkout: Preservation
+    - task: nukeeper.nukeeper.nukeeper.NuKeeper@0
+      displayName: NuKeeper
+      inputs:
+        gitHubConnection: 'procosys - github'
+        arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
+
+### Queue Receiver Service ###
+- stage: QueueReceiverService
+  displayName: QueueReceiverService
+  dependsOn: []
+  jobs:
+  - job: QueueReceiverService
+    steps:
+    - checkout: QueueReceiverService
     - task: nukeeper.nukeeper.nukeeper.NuKeeper@0
       displayName: NuKeeper
       inputs:
