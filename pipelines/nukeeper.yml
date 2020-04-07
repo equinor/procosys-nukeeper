@@ -14,6 +14,10 @@ resources:
     type: github
     name: equinor/procosys-library-api
     endpoint: procosys - github
+  - repository: Preservation # The name used to reference this repository in the checkout step
+    type: github
+    name: equinor/procosys-preservation-api
+    endpoint: procosys - github
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -25,6 +29,18 @@ stages:
   - job: Library
     steps:
     - checkout: Library
+    - task: nukeeper.nukeeper.nukeeper.NuKeeper@0
+      displayName: NuKeeper
+      inputs:
+        gitHubConnection: 'procosys - github'
+        arguments: '--age 0 --change Major --maxpackageupdates 100 --consolidate --fork PreferSingleRepository'
+        targetFolder: src
+- stage: Preservation
+  displayName: Preservation
+  jobs:
+  - job: Preservation
+    steps:
+    - checkout: Preservation
     - task: nukeeper.nukeeper.nukeeper.NuKeeper@0
       displayName: NuKeeper
       inputs:
