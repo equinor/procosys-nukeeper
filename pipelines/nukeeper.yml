@@ -13,15 +13,15 @@ resources:
   - repository: Library # The name used to reference this repository in the checkout step
     type: github
     name: equinor/procosys-library-api
-    endpoint: procosys - github
+    endpoint: equinor
   - repository: QueueReceiverService # The name used to reference this repository in the checkout step
     type: github
     name: equinor/procosys-queue-reciver-service
-    endpoint: procosys - github
+    endpoint: equinor
   - repository: AuthAccessTriggerFunction # The name used to reference this repository in the checkout step
     type: github
     name: equinor/procosys-auth-access-trigger-function
-    endpoint: procosys - github
+    endpoint: equinor
 
 pool:
   vmImage: 'ubuntu-latest'
